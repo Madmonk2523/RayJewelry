@@ -18,13 +18,21 @@ if (navToggle && siteNav) {
   });
 }
 
-const track = document.getElementById("carousel-track");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
-const dotsWrap = document.getElementById("carousel-dots");
+function initCarousel(config) {
+  const track = document.getElementById(config.trackId);
+  const prevBtn = document.getElementById(config.prevId);
+  const nextBtn = document.getElementById(config.nextId);
+  const dotsWrap = document.getElementById(config.dotsId);
 
-if (track && prevBtn && nextBtn && dotsWrap) {
+  if (!track || !prevBtn || !nextBtn || !dotsWrap) {
+    return;
+  }
+
   const slides = Array.from(track.querySelectorAll(".carousel-slide"));
+  if (slides.length === 0) {
+    return;
+  }
+
   let current = 0;
   let autoPlayId = null;
 
@@ -32,7 +40,7 @@ if (track && prevBtn && nextBtn && dotsWrap) {
     const dot = document.createElement("button");
     dot.className = "carousel-dot";
     dot.type = "button";
-    dot.setAttribute("aria-label", `Go to image ${index + 1}`);
+    dot.setAttribute("aria-label", `${config.dotLabel} ${index + 1}`);
     dot.addEventListener("click", () => {
       goTo(index);
       resetAutoPlay();
@@ -67,21 +75,10 @@ if (track && prevBtn && nextBtn && dotsWrap) {
     resetAutoPlay();
   });
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") {
-      goTo(current - 1);
-      resetAutoPlay();
-    }
-    if (event.key === "ArrowRight") {
-      goTo(current + 1);
-      resetAutoPlay();
-    }
-  });
-
   const startAutoPlay = () => {
     autoPlayId = window.setInterval(() => {
       goTo(current + 1);
-    }, 5500);
+    }, config.intervalMs);
   };
 
   const resetAutoPlay = () => {
@@ -106,7 +103,49 @@ if (track && prevBtn && nextBtn && dotsWrap) {
 
   update();
   startAutoPlay();
+
+  return {
+    prev: () => {
+      goTo(current - 1);
+      resetAutoPlay();
+    },
+    next: () => {
+      goTo(current + 1);
+      resetAutoPlay();
+    }
+  };
 }
+
+const galleryCarousel = initCarousel({
+  trackId: "carousel-track",
+  prevId: "prev-btn",
+  nextId: "next-btn",
+  dotsId: "carousel-dots",
+  dotLabel: "Go to image",
+  intervalMs: 5200
+});
+
+const reviewCarousel = initCarousel({
+  trackId: "review-track",
+  prevId: "review-prev-btn",
+  nextId: "review-next-btn",
+  dotsId: "review-dots",
+  dotLabel: "Go to review",
+  intervalMs: 4800
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") {
+    if (galleryCarousel) {
+      galleryCarousel.prev();
+    }
+  }
+  if (event.key === "ArrowRight") {
+    if (galleryCarousel) {
+      galleryCarousel.next();
+    }
+  }
+});
 
 const revealTargets = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window && revealTargets.length > 0) {

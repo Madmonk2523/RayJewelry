@@ -57,6 +57,7 @@
       </button>
 
       <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="#top">Home</a>
         <a href="#about">About</a>
         <a href="#products">Products</a>
         <a href="#gallery">Gallery</a>
@@ -70,12 +71,11 @@
     <section class="hero section reveal">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-content">
-        <img class="hero-logo" src="logo.jpg" alt="Ray Jewelry Inc gold filled jewelry logo" width="260" height="90" />
         <h1>Luxury Gold Filled Jewelry - Retail &amp; Wholesale</h1>
         <p>Most beautiful jewelry with standout quality and exceptional pricing for retail shoppers and wholesale buyers in New York City.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://www.amazon.com/shops/A3N0Z38ICL9WHY" target="_blank" rel="noopener noreferrer">Shop on Amazon</a>
-          <a class="btn btn-secondary" href="#products">View Collection</a>
+          <a class="btn btn-secondary" href="tel:+12122442636">Call Now</a>
         </div>
       </div>
     </section>
@@ -188,36 +188,66 @@
     <section id="reviews" class="section reveal">
       <div class="container">
         <h2>Customer Reviews</h2>
-        <div class="review-grid">
-          <article class="review-card">
-            <h3>Brenda Deckon</h3>
-            <p>"Very nice place and good customer service beautiful good"</p>
-          </article>
-          <article class="review-card">
-            <h3>Mark Louz</h3>
-            <p>"BEST STORE EVER THE STORE IS Beautiful!"</p>
-          </article>
-          <article class="review-card">
-            <h3>isaac Louz</h3>
-            <p>"BEST STORE EVER"</p>
-          </article>
-          <article class="review-card">
-            <h3>Olivia Rodriguez</h3>
-            <p>"Very nice jewelry and service"</p>
-          </article>
-          <article class="review-card">
-            <h3>Braden Smith</h3>
-            <p>"best quality"</p>
-          </article>
-          <article class="review-card">
-            <h3>Jennifer T</h3>
-            <p>"Nice jewelry."</p>
-          </article>
-          <article class="review-card">
-            <h3>yojana Rosales</h3>
-            <p>"The best"</p>
-          </article>
+        <div class="carousel reviews-carousel" aria-label="Customer reviews carousel">
+          <button class="carousel-btn prev" id="review-prev-btn" aria-label="Previous review">&#10094;</button>
+
+          <div class="carousel-track-wrap review-track-wrap">
+            <div class="carousel-track review-track" id="review-track">
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>Brenda Deckon</h3>
+                  <p>"Very nice place and good customer service beautiful good"</p>
+                </div>
+              </article>
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>Mark Louz</h3>
+                  <p>"BEST STORE EVER THE STORE IS Beautiful!"</p>
+                </div>
+              </article>
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>isaac Louz</h3>
+                  <p>"BEST STORE EVER"</p>
+                </div>
+              </article>
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>Olivia Rodriguez</h3>
+                  <p>"Very nice jewelry and service"</p>
+                </div>
+              </article>
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>Braden Smith</h3>
+                  <p>"best quality"</p>
+                </div>
+              </article>
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>Jennifer T</h3>
+                  <p>"Nice jewelry."</p>
+                </div>
+              </article>
+              <article class="carousel-slide review-slide">
+                <div class="review-card">
+                  <div class="review-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <h3>yojana Rosales</h3>
+                  <p>"The best"</p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="carousel-btn next" id="review-next-btn" aria-label="Next review">&#10095;</button>
         </div>
+        <div class="carousel-dots" id="review-dots" aria-label="Review slide selector"></div>
       </div>
     </section>
 
